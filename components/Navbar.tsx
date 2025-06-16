@@ -1,41 +1,30 @@
-import { NAV_LINKS } from "@/constants"
-import Image from "next/image"
-import Link from "next/link"
-import Button from "./Button"
+import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="flexBetween max-container padding-container relative z-30 py-5">
-      <Link href="/">
-        <Image src="/hilink-logo.svg" alt="logo" width={74} height={29} />
-      </Link>
+    <header className="w-full shadow-md">
+      <nav className="bg-white px-6 flex items-center justify-between">
+        <Link href="/">
+          <Image src="/mainlogo.png" alt="NormadNautica" width={140} height={100} />
+        </Link>
 
-      <ul className="hidden h-full gap-12 lg:flex">
-        {NAV_LINKS.map((link) => (
-          <Link href={link.href} key={link.key} className="regular-16 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold">
-            {link.label}
-          </Link>
-        ))}
-      </ul>
-
-      <div className="lg:flexCenter hidden">
-        <Button 
-          type="button"
-          title="Login"
-          icon="/user.svg"
-          variant="btn_dark_green"
+        <ul className="hidden lg:flex gap-8 font-semibold text-gray-800 text-sm tracking-wide">
+          <li><Link href="/">HOME</Link></li>
+          <li><Link href="/trips">TRIPS</Link></li>
+          <li><Link href="/about">ABOUT US</Link></li>
+          <li><Link href="/contact">CONTACT US</Link></li>
+        </ul>
+        <Image
+          src="/menu.svg"
+          alt="menu"
+          width={28}
+          height={20}
+          className="lg:hidden cursor-pointer"
         />
-      </div>
+      </nav>
+    </header>
+  );
+};
 
-      <Image 
-        src="menu.svg"
-        alt="menu"
-        width={32}
-        height={32}
-        className="inline-block cursor-pointer lg:hidden"
-      />
-    </nav>
-  )
-}
-
-export default Navbar
+export default Navbar;
